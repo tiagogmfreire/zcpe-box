@@ -9,11 +9,11 @@ package { 'php5':
 }
 ->
 file {'/etc/php5/apache2/conf.d/local.ini':
-  ensure => present,
+  ensure => link,
   owner => root, 
   group => root, 
   mode => 644,
-  content => "display_errors = On \nerror_reporting = E_ALL \n",
+  target => "/vagrant/php.ini",
   notify  => Service['apache2'],
 }
 ->
